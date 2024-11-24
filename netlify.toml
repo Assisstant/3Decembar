@@ -4,4 +4,6 @@
 [[redirects]]
   from = "/*"
   to = "/index.html"
-  status = 200
+  status = 200[main 0108938] Simplify title text
+   1 file changed, 1 insertion(+), 1 deletion(-)
+  
