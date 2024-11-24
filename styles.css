@@ -5,306 +5,78 @@
 }
 
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f5f5f5;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
     color: #333;
 }
 
 header {
-    background-color: #fff;
-    padding: 2rem;
+    background-color: #2c3e50;
+    color: white;
     text-align: center;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 2rem 1rem;
 }
 
 h1 {
-    margin-bottom: 1.5rem;
-    color: #2c3e50;
-}
-
-nav {
+    font-size: 2rem;
     margin-bottom: 1rem;
 }
 
-.filter-btn {
-    padding: 0.5rem 1rem;
-    margin: 0 0.5rem;
-    border: none;
-    border-radius: 25px;
-    background-color: #eee;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.filter-btn.active {
-    background-color: #2c3e50;
-    color: white;
-}
-
-.gallery-container {
-    max-width: 1200px;
-    margin: 2rem auto;
-    padding: 0 1rem;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 1.5rem;
-}
-
-.gallery-item {
-    position: relative;
-    overflow: hidden;
-    border-radius: 10px;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
-}
-
-.gallery-item:hover {
-    transform: translateY(-5px);
-}
-
-.gallery-item img {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
-    display: block;
-}
-
-.gallery-item iframe {
-    width: 100%;
-    height: 250px;
-    border: none;
-}
-
-.overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    gap: 1rem;
-}
-
-.gallery-item:hover .overlay {
-    opacity: 1;
-}
-
-.overlay i {
-    color: white;
-    font-size: 1.5rem;
-    cursor: pointer;
-    padding: 10px;
-    border-radius: 50%;
-    transition: all 0.3s ease;
-}
-
-.overlay i:hover {
-    transform: scale(1.1);
-    background: rgba(255, 255, 255, 0.2);
-}
-
-.overlay .delete-btn {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    color: #ff4444;
-}
-
-.overlay .delete-btn:hover {
-    background: rgba(255, 0, 0, 0.2);
-}
-
-.delete-button {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    z-index: 10;
-    padding: 8px 16px;
-    background-color: #ff4444;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: bold;
-    opacity: 0;
-    transition: opacity 0.3s ease, background-color 0.3s ease;
-}
-
-.gallery-item:hover .delete-button {
-    opacity: 1;
-}
-
-.delete-button:hover {
-    background-color: #ff0000;
-}
-
-/* Modal styles */
-.modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.9);
-    z-index: 1000;
-}
-
-.modal-content {
-    max-width: 90%;
-    max-height: 90%;
-    margin: auto;
-    display: block;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-.close-modal {
-    position: absolute;
-    top: 15px;
-    right: 35px;
-    color: #f1f1f1;
-    font-size: 40px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.upload-section {
-    margin: 1rem 0;
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    flex-wrap: wrap;
-}
-
-.upload-section input {
-    padding: 0.5rem 1rem;
-    border: 1px solid #ddd;
-    border-radius: 25px;
-    width: 300px;
-    font-size: 1rem;
-}
-
-.upload-section select {
-    padding: 0.5rem 1rem;
-    border: 1px solid #ddd;
-    border-radius: 25px;
-    font-size: 1rem;
-}
-
-.upload-section button {
-    padding: 0.5rem 1.5rem;
-    border: none;
-    border-radius: 25px;
-    background-color: #2c3e50;
-    color: white;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.upload-section button:hover {
-    background-color: #34495e;
-}
-
-.featured-container {
-    max-width: 1200px;
+.content {
+    max-width: 800px;
     margin: 2rem auto;
     padding: 0 1rem;
 }
 
-.gallery-item.featured {
-    width: 100%;
-    height: 400px;
+h2 {
+    color: #2c3e50;
+    margin-bottom: 1rem;
+}
+
+p {
     margin-bottom: 2rem;
+    text-align: justify;
 }
 
-.gallery-item.featured img,
-.gallery-item.featured iframe {
+.video-gallery {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.gallery-item.video {
+    position: relative;
     width: 100%;
-    height: 400px;
-    object-fit: cover;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    height: 0;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 
-/* Confirmation dialog styling */
-.confirm-dialog {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-    z-index: 1100;
-    display: none;
-}
-
-.confirm-dialog .buttons {
-    display: flex;
-    justify-content: flex-end;
-    gap: 10px;
-    margin-top: 15px;
-}
-
-.confirm-dialog button {
-    padding: 8px 15px;
+.gallery-item.video iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
 }
 
-.confirm-dialog .confirm-delete {
-    background-color: #ff4444;
-    color: white;
-}
-
-.confirm-dialog .cancel-delete {
-    background-color: #ccc;
-    color: white;
-}
-
-.confirm-dialog button:hover {
-    opacity: 0.9;
-}
-
-/* Responsive design */
 @media (max-width: 768px) {
-    .gallery-container {
-        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    h1 {
+        font-size: 1.5rem;
     }
     
-    header {
-        padding: 1rem;
+    h2 {
+        font-size: 1.2rem;
     }
     
-    .filter-btn {
-        margin-bottom: 0.5rem;
-    }
-
-    .upload-section {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .upload-section input {
-        width: 100%;
-        max-width: 300px;
-    }
-
-    .gallery-item.featured {
-        height: 300px;
-    }
-
-    .gallery-item.featured img,
-    .gallery-item.featured iframe {
-        height: 300px;
+    .video-gallery {
+        grid-template-columns: 1fr;
     }
 }
