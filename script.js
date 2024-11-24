@@ -45,10 +45,9 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     });
-document.addEventListener('DOMContentLoaded', () => {
-    const videoGallery = document.querySelector('.video-gallery');
-    
+
     // Add click handlers for move buttons
+    const videoGallery = document.querySelector('.video-gallery');
     videoGallery.addEventListener('click', (e) => {
         if (!e.target.classList.contains('move-btn')) return;
         
@@ -67,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     });
-});
+
     // Modal functionality for images
     const modal = document.querySelector('.modal');
     const modalImg = document.querySelector('.modal-content');
@@ -184,28 +183,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Clear input
         mediaUrl.value = '';
-    });
-
-    // Simplifying the JavaScript to use up/down buttons instead of drag and drop
-    const videoGallery = document.querySelector('.video-gallery');
-    
-    // Add click handlers for move buttons
-    videoGallery.addEventListener('click', (e) => {
-        if (!e.target.classList.contains('move-btn')) return;
-        
-        const button = e.target;
-        const videoItem = button.closest('.gallery-item');
-        
-        if (button.classList.contains('up')) {
-            const prevSibling = videoItem.previousElementSibling;
-            if (prevSibling) {
-                videoGallery.insertBefore(videoItem, prevSibling);
-            }
-        } else if (button.classList.contains('down')) {
-            const nextSibling = videoItem.nextElementSibling;
-            if (nextSibling) {
-                videoGallery.insertBefore(nextSibling, videoItem);
-            }
-        }
     });
 });
