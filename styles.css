@@ -79,9 +79,10 @@ h1 {
         ". down .";
     grid-template-columns: 1fr auto 1fr;
     grid-template-rows: 1fr auto 1fr;
+    gap: 10px;
     opacity: 0;
     transition: opacity 0.3s ease;
-    pointer-events: none; /* This allows clicking through the control area to the video */
+    pointer-events: none;
 }
 
 .video-controls button {
@@ -122,21 +123,25 @@ h1 {
 .btn-direction[onclick*="up"] {
     grid-area: up;
     justify-self: center;
+    align-self: end;
 }
 
 .btn-direction[onclick*="down"] {
     grid-area: down;
     justify-self: center;
+    align-self: start;
 }
 
 .btn-direction[onclick*="left"] {
     grid-area: left;
     justify-self: end;
+    align-self: center;
 }
 
 .btn-direction[onclick*="right"] {
     grid-area: right;
     justify-self: start;
+    align-self: center;
 }
 
 .hero h1 {
