@@ -158,7 +158,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const videos = document.querySelectorAll('.gallery-item.video');
 
     videos.forEach(video => {
-        video.draggable = true;
+        const handle = video.querySelector('.drag-handle');
+        
+        // Only make the video draggable when dragging from the handle
+        handle.addEventListener('mousedown', () => {
+            video.draggable = true;
+        });
+        
+        video.addEventListener('mouseup', () => {
+            video.draggable = false;
+        });
         
         video.addEventListener('dragstart', () => {
             video.classList.add('dragging');
@@ -166,6 +175,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         video.addEventListener('dragend', () => {
             video.classList.remove('dragging');
+            video.draggable = false;
         });
     });
 
@@ -173,10 +183,12 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault();
         const afterElement = getDragAfterElement(videoGallery, e.clientY);
         const draggable = document.querySelector('.dragging');
-        if (afterElement == null) {
-            videoGallery.appendChild(draggable);
-        } else {
-            videoGallery.insertBefore(draggable, afterElement);
+        if (draggable) {
+            if (afterElement == null) {
+                videoGallery.appendChild(draggable);
+            } else {
+                videoGallery.insertBefore(draggable, afterElement);
+            }
         }
     });
 

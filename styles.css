@@ -95,8 +95,32 @@ p {
     overflow: hidden;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    cursor: move; /* Show move cursor */
     transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.drag-handle {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 30px;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: move;
+    color: white;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.gallery-item.video:hover .drag-handle {
+    opacity: 1;
+}
+
+.drag-handle i {
+    font-size: 20px;
 }
 
 .gallery-item.video.dragging {
