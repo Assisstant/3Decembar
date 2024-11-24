@@ -181,6 +181,47 @@ document.addEventListener('DOMContentLoaded', () => {
             galleryContainer.appendChild(newItem);
         }
     });
+
+    // Add event listeners for video interaction
+    const videoItems = document.querySelectorAll('.video-item');
+    let hideTimeout;
+
+    videoItems.forEach(item => {
+        item.addEventListener('mouseenter', () => {
+            clearTimeout(hideTimeout);
+            // Remove active class from all items
+            videoItems.forEach(v => v.classList.remove('active'));
+            // Add active class to current item
+            item.classList.add('active');
+        });
+
+        item.addEventListener('mouseleave', () => {
+            hideTimeout = setTimeout(() => {
+                item.classList.remove('active');
+            }, 500); // Half second delay
+        });
+
+        // For touch devices
+        item.addEventListener('touchstart', () => {
+            clearTimeout(hideTimeout);
+            // Remove active class from all items
+            videoItems.forEach(v => v.classList.remove('active'));
+            // Add active class to current item
+            item.classList.add('active');
+        });
+
+        // Hide controls after inactivity
+        let activityTimeout;
+        const resetActivityTimer = () => {
+            clearTimeout(activityTimeout);
+            activityTimeout = setTimeout(() => {
+                item.classList.remove('active');
+            }, 3000); // 3 seconds of inactivity
+        };
+
+        item.addEventListener('mousemove', resetActivityTimer);
+        item.addEventListener('touchmove', resetActivityTimer);
+    });
 });
 
 function moveVideo(button, direction) {
