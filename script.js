@@ -155,58 +155,43 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initialize drag and drop functionality
     const videoGallery = document.querySelector('.video-gallery');
-    const galleryItems = document.querySelectorAll('.gallery-item.video');
+    const videos = document.querySelectorAll('.gallery-item.video');
 
-    // Store original video order
-    const videoOrder = Array.from(galleryItems).map(item => {
-        const iframe = item.querySelector('iframe');
-        return iframe.src;
-    });
-
-    galleryItems.forEach(item => {
-        item.setAttribute('draggable', true);
+    videos.forEach(video => {
+        video.draggable = true;
         
-        item.addEventListener('dragstart', (e) => {
-            const index = Array.from(galleryItems).indexOf(item);
-            e.dataTransfer.setData('text/plain', index.toString());
-            item.classList.add('dragging');
+        video.addEventListener('dragstart', () => {
+            video.classList.add('dragging');
         });
 
-        item.addEventListener('dragend', () => {
-            item.classList.remove('dragging');
-            
-            // Update videoOrder array after drag
-            const newOrder = Array.from(document.querySelectorAll('.gallery-item.video')).map(item => {
-                const iframe = item.querySelector('iframe');
-                return iframe.src;
-            });
-            videoOrder.splice(0, videoOrder.length, ...newOrder);
-        });
-
-        item.addEventListener('dragover', (e) => {
-            e.preventDefault();
-        });
-
-        item.addEventListener('drop', (e) => {
-            e.preventDefault();
-            const draggedIdx = parseInt(e.dataTransfer.getData('text/plain'));
-            const dropIdx = Array.from(galleryItems).indexOf(item);
-            
-            if (draggedIdx !== dropIdx) {
-                // Get all videos
-                const videos = Array.from(document.querySelectorAll('.gallery-item.video'));
-                const draggedItem = videos[draggedIdx];
-                
-                // Swap the iframe sources
-                const draggedSrc = draggedItem.querySelector('iframe').src;
-                const dropSrc = item.querySelector('iframe').src;
-                
-                draggedItem.querySelector('iframe').src = dropSrc;
-                item.querySelector('iframe').src = draggedSrc;
-                
-                // Update videoOrder array
-                [videoOrder[draggedIdx], videoOrder[dropIdx]] = [videoOrder[dropIdx], videoOrder[draggedIdx]];
-            }
+        video.addEventListener('dragend', () => {
+            video.classList.remove('dragging');
         });
     });
+
+    videoGallery.addEventListener('dragover', e => {
+        e.preventDefault();
+        const afterElement = getDragAfterElement(videoGallery, e.clientY);
+        const draggable = document.querySelector('.dragging');
+        if (afterElement == null) {
+            videoGallery.appendChild(draggable);
+        } else {
+            videoGallery.insertBefore(draggable, afterElement);
+        }
+    });
+
+    function getDragAfterElement(container, y) {
+        const draggableElements = [...container.querySelectorAll('.gallery-item.video:not(.dragging)')];
+
+        return draggableElements.reduce((closest, child) => {
+            const box = child.getBoundingClientRect();
+            const offset = y - box.top - box.height / 2;
+
+            if (offset < 0 && offset > closest.offset) {
+                return { offset: offset, element: child };
+            } else {
+                return closest;
+            }
+        }, { offset: Number.NEGATIVE_INFINITY }).element;
+    }
 });
