@@ -45,7 +45,29 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     });
-
+document.addEventListener('DOMContentLoaded', () => {
+    const videoGallery = document.querySelector('.video-gallery');
+    
+    // Add click handlers for move buttons
+    videoGallery.addEventListener('click', (e) => {
+        if (!e.target.classList.contains('move-btn')) return;
+        
+        const button = e.target;
+        const videoItem = button.closest('.gallery-item');
+        
+        if (button.classList.contains('up')) {
+            const prevSibling = videoItem.previousElementSibling;
+            if (prevSibling) {
+                videoGallery.insertBefore(videoItem, prevSibling);
+            }
+        } else if (button.classList.contains('down')) {
+            const nextSibling = videoItem.nextElementSibling;
+            if (nextSibling) {
+                videoGallery.insertBefore(nextSibling, videoItem);
+            }
+        }
+    });
+});
     // Modal functionality for images
     const modal = document.querySelector('.modal');
     const modalImg = document.querySelector('.modal-content');
@@ -135,6 +157,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 iframe.setAttribute('frameborder', '0');
                 iframe.setAttribute('allowfullscreen', '');
                 newItem.appendChild(iframe);
+
+                // Add move buttons
+                const moveUpButton = document.createElement('button');
+                moveUpButton.className = 'move-btn up';
+                moveUpButton.textContent = 'Up';
+                newItem.appendChild(moveUpButton);
+
+                const moveDownButton = document.createElement('button');
+                moveDownButton.className = 'move-btn down';
+                moveDownButton.textContent = 'Down';
+                newItem.appendChild(moveDownButton);
             } else {
                 alert('Please enter a valid YouTube URL');
                 return;
@@ -153,45 +186,26 @@ document.addEventListener('DOMContentLoaded', () => {
         mediaUrl.value = '';
     });
 
-    // Simplifying drag and drop functionality for videos
+    // Simplifying the JavaScript to use up/down buttons instead of drag and drop
     const videoGallery = document.querySelector('.video-gallery');
-    const videos = document.querySelectorAll('.gallery-item.video');
-
-    videos.forEach(video => {
-        video.draggable = true;
-
-        video.addEventListener('dragstart', () => {
-            video.classList.add('dragging');
-        });
-
-        video.addEventListener('dragend', () => {
-            video.classList.remove('dragging');
-        });
-    });
-
-    videoGallery.addEventListener('dragover', e => {
-        e.preventDefault();
-        const afterElement = getDragAfterElement(videoGallery, e.clientY);
-        const draggable = document.querySelector('.dragging');
-        if (afterElement == null) {
-            videoGallery.appendChild(draggable);
-        } else {
-            videoGallery.insertBefore(draggable, afterElement);
+    
+    // Add click handlers for move buttons
+    videoGallery.addEventListener('click', (e) => {
+        if (!e.target.classList.contains('move-btn')) return;
+        
+        const button = e.target;
+        const videoItem = button.closest('.gallery-item');
+        
+        if (button.classList.contains('up')) {
+            const prevSibling = videoItem.previousElementSibling;
+            if (prevSibling) {
+                videoGallery.insertBefore(videoItem, prevSibling);
+            }
+        } else if (button.classList.contains('down')) {
+            const nextSibling = videoItem.nextElementSibling;
+            if (nextSibling) {
+                videoGallery.insertBefore(nextSibling, videoItem);
+            }
         }
     });
-
-    function getDragAfterElement(container, y) {
-        const draggableElements = [...container.querySelectorAll('.gallery-item.video:not(.dragging)')];
-
-        return draggableElements.reduce((closest, child) => {
-            const box = child.getBoundingClientRect();
-            const offset = y - box.top - box.height / 2;
-
-            if (offset < 0 && offset > closest.offset) {
-                return { offset: offset, element: child };
-            } else {
-                return closest;
-            }
-        }, { offset: Number.NEGATIVE_INFINITY }).element;
-    }
 });
