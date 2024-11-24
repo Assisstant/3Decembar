@@ -180,8 +180,37 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             galleryContainer.appendChild(newItem);
         }
-
-        // Clear input
-        mediaUrl.value = '';
     });
 });
+
+function moveVideo(button, direction) {
+    const videoItem = button.closest('.video-item');
+    const gallery = videoItem.parentElement;
+    
+    switch(direction) {
+        case 'up':
+            const prev = videoItem.previousElementSibling;
+            if (prev) {
+                gallery.insertBefore(videoItem, prev);
+            }
+            break;
+        case 'down':
+            const next = videoItem.nextElementSibling;
+            if (next) {
+                gallery.insertBefore(next, videoItem);
+            }
+            break;
+        case 'left':
+            const prevSibling = videoItem.previousElementSibling;
+            if (prevSibling) {
+                gallery.insertBefore(videoItem, prevSibling);
+            }
+            break;
+        case 'right':
+            const nextSibling = videoItem.nextElementSibling;
+            if (nextSibling) {
+                gallery.insertBefore(nextSibling, videoItem);
+            }
+            break;
+    }
+}
