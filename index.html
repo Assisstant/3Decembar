@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media Gallery</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <h1>Media Gallery</h1>
+        <div class="upload-section">
+            <input type="text" id="mediaUrl" placeholder="Enter image URL or YouTube video link">
+            <select id="mediaType">
+                <option value="image">Image</option>
+                <option value="video">Video</option>
+            </select>
+            <button id="uploadBtn">Add Media</button>
+        </div>
+        <nav>
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="image">Images</button>
+            <button class="filter-btn" data-filter="video">Videos</button>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Featured Row -->
+        <section class="featured-container">
+            <div class="gallery-item featured image">
+                <button class="delete-button">Delete</button>
+                <img src="https://source.unsplash.com/random/1200x600?landscape" alt="Featured Landscape">
+                <div class="overlay">
+                    <i class="fas fa-search"></i>
+                </div>
+            </div>
+        </section>
+
+        <!-- Regular Gallery -->
+        <section class="gallery-container">
+            <!-- Images -->
+            <div class="gallery-item image">
+                <button class="delete-button">Delete</button>
+                <img src="https://source.unsplash.com/random/800x600?nature" alt="Nature">
+                <div class="overlay">
+                    <i class="fas fa-search"></i>
+                </div>
+            </div>
+            <div class="gallery-item image">
+                <button class="delete-button">Delete</button>
+                <img src="https://source.unsplash.com/random/800x600?city" alt="City">
+                <div class="overlay">
+                    <i class="fas fa-search"></i>
+                </div>
+            </div>
+            <div class="gallery-item image">
+                <button class="delete-button">Delete</button>
+                <img src="https://source.unsplash.com/random/800x600?architecture" alt="Architecture">
+                <div class="overlay">
+                    <i class="fas fa-search"></i>
+                </div>
+            </div>
+
+            <!-- YouTube Videos -->
+            <div class="gallery-item video">
+                <button class="delete-button">Delete</button>
+                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div class="gallery-item video">
+                <button class="delete-button">Delete</button>
+                <iframe src="https://www.youtube.com/embed/jNQXAC9IVRw" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal for image preview -->
+    <div class="modal">
+        <span class="close-modal">&times;</span>
+        <img class="modal-content" id="modal-img">
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
