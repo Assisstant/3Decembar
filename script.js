@@ -157,53 +157,49 @@ document.addEventListener('DOMContentLoaded', () => {
     const videoGallery = document.querySelector('.video-gallery');
     const videos = document.querySelectorAll('.gallery-item.video');
 
+    let draggedItem = null;
+
     videos.forEach(video => {
         const handle = video.querySelector('.drag-handle');
         
-        // Only make the video draggable when dragging from the handle
-        handle.addEventListener('mousedown', () => {
+        handle.addEventListener('mousedown', (e) => {
+            draggedItem = video;
             video.draggable = true;
+            setTimeout(() => {
+                video.classList.add('dragging');
+            }, 0);
         });
-        
+
         video.addEventListener('mouseup', () => {
             video.draggable = false;
         });
-        
-        video.addEventListener('dragstart', () => {
-            video.classList.add('dragging');
+
+        video.addEventListener('dragstart', (e) => {
+            e.dataTransfer.effectAllowed = 'move';
         });
 
         video.addEventListener('dragend', () => {
             video.classList.remove('dragging');
             video.draggable = false;
+            draggedItem = null;
+        });
+
+        video.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            if (!draggedItem || draggedItem === video) return;
+
+            const rect = video.getBoundingClientRect();
+            const midpoint = rect.top + rect.height / 2;
+            
+            if (e.clientY < midpoint) {
+                video.parentNode.insertBefore(draggedItem, video);
+            } else {
+                video.parentNode.insertBefore(draggedItem, video.nextSibling);
+            }
         });
     });
 
-    videoGallery.addEventListener('dragover', e => {
+    videoGallery.addEventListener('dragover', (e) => {
         e.preventDefault();
-        const afterElement = getDragAfterElement(videoGallery, e.clientY);
-        const draggable = document.querySelector('.dragging');
-        if (draggable) {
-            if (afterElement == null) {
-                videoGallery.appendChild(draggable);
-            } else {
-                videoGallery.insertBefore(draggable, afterElement);
-            }
-        }
     });
-
-    function getDragAfterElement(container, y) {
-        const draggableElements = [...container.querySelectorAll('.gallery-item.video:not(.dragging)')];
-
-        return draggableElements.reduce((closest, child) => {
-            const box = child.getBoundingClientRect();
-            const offset = y - box.top - box.height / 2;
-
-            if (offset < 0 && offset > closest.offset) {
-                return { offset: offset, element: child };
-            } else {
-                return closest;
-            }
-        }, { offset: Number.NEGATIVE_INFINITY }).element;
-    }
 });
