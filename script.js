@@ -223,15 +223,19 @@ document.addEventListener('DOMContentLoaded', () => {
         item.addEventListener('touchmove', resetActivityTimer);
     });
 
-    // Video release dates
+    // Video release dates (working days only)
     const videoSchedule = {
-        'nastava': new Date('2023-11-26T08:00:00'),
-        'kabineti': new Date('2023-11-27T08:00:00'),
-        'modificirana': new Date('2023-11-28T08:00:00'),
-        'pedagog': new Date('2023-11-29T08:00:00'),
-        'vospituvaci': new Date('2023-11-30T08:00:00'),
-        'obrazovni': new Date('2023-12-01T08:00:00')
+        'nastava': new Date('2023-11-27T08:00:00'),      // Monday
+        'kabineti': new Date('2023-11-28T08:00:00'),     // Tuesday
+        'modificirana': new Date('2023-11-29T08:00:00'),  // Wednesday
+        'pedagog': new Date('2023-11-30T08:00:00'),      // Thursday
+        'vospituvaci': new Date('2023-12-01T08:00:00'),  // Friday
+        'obrazovni': new Date('2023-12-04T08:00:00')     // Monday
     };
+
+    function padNumber(num) {
+        return num.toString().padStart(2, '0');
+    }
 
     function updateVideoAvailability() {
         const now = new Date();
@@ -244,8 +248,15 @@ document.addEventListener('DOMContentLoaded', () => {
                     const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
                     const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
                     const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+                    const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
                     
-                    overlay.innerHTML = `Видеото ќе биде достапно за:<br>${days} дена, ${hours} часа и ${minutes} минути`;
+                    let countdownText = 'Видеото ќе биде достапно за:<br>';
+                    if (days > 0) {
+                        countdownText += `${days} дена, `;
+                    }
+                    countdownText += `${padNumber(hours)}:${padNumber(minutes)}:${padNumber(seconds)}`;
+                    
+                    overlay.innerHTML = countdownText;
                     overlay.style.display = 'flex';
                 } else {
                     overlay.style.display = 'none';
@@ -254,8 +265,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Update countdown every minute
-    setInterval(updateVideoAvailability, 60000);
+    // Update countdown every second
+    setInterval(updateVideoAvailability, 1000);
     updateVideoAvailability(); // Initial update
 
     function moveVideo(button, direction) {
