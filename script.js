@@ -250,14 +250,14 @@ document.addEventListener('DOMContentLoaded', () => {
                     const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
                     const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
                     
-                    let countdownText = 'Видеото ќе биде достапно за:<br>';
+                    let countdownText = '<strong>Видеото ќе биде достапно за:</strong><br>';
                     if (days > 0) {
-                        countdownText += `${days} дена, `;
+                        countdownText += `${days} дена<br>`;
                     }
-                    countdownText += `${padNumber(hours)}:${padNumber(minutes)}:${padNumber(seconds)}`;
+                    countdownText += `<span style="font-size: 1.4em">${padNumber(hours)}:${padNumber(minutes)}:${padNumber(seconds)}</span>`;
                     
                     overlay.innerHTML = countdownText;
-                    overlay.style.display = 'flex';
+                    overlay.style.display = 'block';
                 } else {
                     overlay.style.display = 'none';
                 }
