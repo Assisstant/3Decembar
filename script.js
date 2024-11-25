@@ -227,7 +227,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const videoSchedule = {
         'nastava': new Date('2023-11-27T08:00:00'),      // Monday
         'kabineti': new Date('2023-11-28T08:00:00'),     // Tuesday
-        'modificirana': new Date('2023-11-29T08:00:00'),  // Wednesday
+        'modificirana': new Date('2023-11-29T08:00:00'), // Wednesday
         'pedagog': new Date('2023-11-30T08:00:00'),      // Thursday
         'vospituvaci': new Date('2023-12-01T08:00:00'),  // Friday
         'obrazovni': new Date('2023-12-04T08:00:00')     // Monday
@@ -242,24 +242,24 @@ document.addEventListener('DOMContentLoaded', () => {
         
         Object.entries(videoSchedule).forEach(([videoId, releaseDate]) => {
             const overlay = document.querySelector(`#${videoId}-overlay`);
-            if (overlay) {
-                if (now < releaseDate) {
-                    const timeLeft = releaseDate - now;
-                    const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
-                    const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                    const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-                    const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
-                    
-                    let countdownText = '<strong>Видеото ќе биде достапно за:</strong><br>';
-                    if (days > 0) {
-                        countdownText += `${days} дена<br>`;
-                    }
-                    countdownText += `<span style="font-size: 1.4em">${padNumber(hours)}:${padNumber(minutes)}:${padNumber(seconds)}</span>`;
-                    
-                    overlay.innerHTML = countdownText;
-                } else {
-                    overlay.remove(); // Remove the overlay completely when video is available
+            if (!overlay) return; // Skip if overlay doesn't exist
+            
+            if (now < releaseDate) {
+                const timeLeft = releaseDate - now;
+                const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+                
+                let countdownText = '<strong>Видеото ќе биде достапно за:</strong><br>';
+                if (days > 0) {
+                    countdownText += `${days} дена<br>`;
                 }
+                countdownText += `<span style="font-size: 1.4em">${padNumber(hours)}:${padNumber(minutes)}:${padNumber(seconds)}</span>`;
+                
+                overlay.innerHTML = countdownText;
+            } else {
+                overlay.remove(); // Remove the overlay completely when video is available
             }
         });
     }
