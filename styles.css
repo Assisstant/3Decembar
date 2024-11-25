@@ -11,18 +11,64 @@ body {
     position: relative;
 }
 
+/* Layer 1 - 10% opacity */
 body::before {
     content: "";
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: 25vh;
     background-image: url('images/LogoKocoRacin.png');
     background-repeat: repeat;
     background-size: 80px;
-    opacity: 0.05;
+    opacity: 0.1;
     z-index: -1;
+}
+
+/* Layer 2 - 20% opacity */
+body::after {
+    content: "";
+    position: fixed;
+    top: 25vh;
+    left: 0;
+    width: 100%;
+    height: 25vh;
+    background-image: url('images/LogoKocoRacin.png');
+    background-repeat: repeat;
+    background-size: 80px;
+    opacity: 0.2;
+    z-index: -1;
+}
+
+/* Layer 3 - 30% opacity */
+.gradient-layer-1 {
+    position: fixed;
+    top: 50vh;
+    left: 0;
+    width: 100%;
+    height: 25vh;
+    background-image: url('images/LogoKocoRacin.png');
+    background-repeat: repeat;
+    background-size: 80px;
+    opacity: 0.3;
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* Layer 4 - 40% opacity */
+.gradient-layer-2 {
+    position: fixed;
+    top: 75vh;
+    left: 0;
+    width: 100%;
+    height: 25vh;
+    background-image: url('images/LogoKocoRacin.png');
+    background-repeat: repeat;
+    background-size: 80px;
+    opacity: 0.4;
+    z-index: -1;
+    pointer-events: none;
 }
 
 .hero {
