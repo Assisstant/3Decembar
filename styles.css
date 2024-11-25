@@ -22,8 +22,24 @@ body::before {
     background-image: url('images/LogoKocoRacin.png');
     background-repeat: repeat;
     background-size: 80px;
-    -webkit-mask-image: radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.1) 20%, rgba(0,0,0,0.2) 40%, rgba(0,0,0,0.3) 60%, rgba(0,0,0,0.4) 80%);
-    mask-image: radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.1) 20%, rgba(0,0,0,0.2) 40%, rgba(0,0,0,0.3) 60%, rgba(0,0,0,0.4) 80%);
+    -webkit-mask-image: radial-gradient(
+        circle at center,
+        transparent 0%,
+        rgba(0,0,0,0.03) 20%,
+        rgba(0,0,0,0.06) 40%,
+        rgba(0,0,0,0.09) 60%,
+        rgba(0,0,0,0.12) 80%,
+        rgba(0,0,0,0.15) 100%
+    );
+    mask-image: radial-gradient(
+        circle at center,
+        transparent 0%,
+        rgba(0,0,0,0.03) 20%,
+        rgba(0,0,0,0.06) 40%,
+        rgba(0,0,0,0.09) 60%,
+        rgba(0,0,0,0.12) 80%,
+        rgba(0,0,0,0.15) 100%
+    );
     z-index: -1;
     pointer-events: none;
 }
