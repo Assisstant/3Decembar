@@ -257,9 +257,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     countdownText += `<span style="font-size: 1.4em">${padNumber(hours)}:${padNumber(minutes)}:${padNumber(seconds)}</span>`;
                     
                     overlay.innerHTML = countdownText;
-                    overlay.style.display = 'block';
                 } else {
-                    overlay.style.display = 'none';
+                    overlay.remove(); // Remove the overlay completely when video is available
                 }
             }
         });
