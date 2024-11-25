@@ -222,36 +222,71 @@ document.addEventListener('DOMContentLoaded', () => {
         item.addEventListener('mousemove', resetActivityTimer);
         item.addEventListener('touchmove', resetActivityTimer);
     });
-});
 
-function moveVideo(button, direction) {
-    const videoItem = button.closest('.video-item');
-    const gallery = videoItem.parentElement;
-    
-    switch(direction) {
-        case 'up':
-            const prev = videoItem.previousElementSibling;
-            if (prev) {
-                gallery.insertBefore(videoItem, prev);
+    // Video release dates
+    const videoSchedule = {
+        'nastava': new Date('2023-11-26T08:00:00'),
+        'kabineti': new Date('2023-11-27T08:00:00'),
+        'modificirana': new Date('2023-11-28T08:00:00'),
+        'pedagog': new Date('2023-11-29T08:00:00'),
+        'vospituvaci': new Date('2023-11-30T08:00:00'),
+        'obrazovni': new Date('2023-12-01T08:00:00')
+    };
+
+    function updateVideoAvailability() {
+        const now = new Date();
+        
+        Object.entries(videoSchedule).forEach(([videoId, releaseDate]) => {
+            const overlay = document.querySelector(`#${videoId}-overlay`);
+            if (overlay) {
+                if (now < releaseDate) {
+                    const timeLeft = releaseDate - now;
+                    const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+                    const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+                    
+                    overlay.innerHTML = `Видеото ќе биде достапно за:<br>${days} дена, ${hours} часа и ${minutes} минути`;
+                    overlay.style.display = 'flex';
+                } else {
+                    overlay.style.display = 'none';
+                }
             }
-            break;
-        case 'down':
-            const next = videoItem.nextElementSibling;
-            if (next) {
-                gallery.insertBefore(next, videoItem);
-            }
-            break;
-        case 'left':
-            const prevSibling = videoItem.previousElementSibling;
-            if (prevSibling) {
-                gallery.insertBefore(videoItem, prevSibling);
-            }
-            break;
-        case 'right':
-            const nextSibling = videoItem.nextElementSibling;
-            if (nextSibling) {
-                gallery.insertBefore(nextSibling, videoItem);
-            }
-            break;
+        });
     }
-}
+
+    // Update countdown every minute
+    setInterval(updateVideoAvailability, 60000);
+    updateVideoAvailability(); // Initial update
+
+    function moveVideo(button, direction) {
+        const videoItem = button.closest('.video-item');
+        const gallery = videoItem.parentElement;
+        
+        switch(direction) {
+            case 'up':
+                const prev = videoItem.previousElementSibling;
+                if (prev) {
+                    gallery.insertBefore(videoItem, prev);
+                }
+                break;
+            case 'down':
+                const next = videoItem.nextElementSibling;
+                if (next) {
+                    gallery.insertBefore(next, videoItem);
+                }
+                break;
+            case 'left':
+                const prevSibling = videoItem.previousElementSibling;
+                if (prevSibling) {
+                    gallery.insertBefore(videoItem, prevSibling);
+                }
+                break;
+            case 'right':
+                const nextSibling = videoItem.nextElementSibling;
+                if (nextSibling) {
+                    gallery.insertBefore(nextSibling, videoItem);
+                }
+                break;
+        }
+    }
+});
