@@ -11,14 +11,14 @@ body {
     position: relative;
 }
 
-/* Layer 1 - 10% opacity */
+/* Center - 10% opacity */
 body::before {
     content: "";
     position: fixed;
     top: 0;
-    left: 0;
-    width: 100%;
-    height: 25vh;
+    left: 25%;
+    width: 50%;
+    height: 100%;
     background-image: url('images/LogoKocoRacin.png');
     background-repeat: repeat;
     background-size: 80px;
@@ -26,47 +26,32 @@ body::before {
     z-index: -1;
 }
 
-/* Layer 2 - 20% opacity */
+/* Left side - 30% opacity */
 body::after {
     content: "";
     position: fixed;
-    top: 25vh;
+    top: 0;
     left: 0;
-    width: 100%;
-    height: 25vh;
-    background-image: url('images/LogoKocoRacin.png');
-    background-repeat: repeat;
-    background-size: 80px;
-    opacity: 0.2;
-    z-index: -1;
-}
-
-/* Layer 3 - 30% opacity */
-.gradient-layer-1 {
-    position: fixed;
-    top: 50vh;
-    left: 0;
-    width: 100%;
-    height: 25vh;
+    width: 25%;
+    height: 100%;
     background-image: url('images/LogoKocoRacin.png');
     background-repeat: repeat;
     background-size: 80px;
     opacity: 0.3;
     z-index: -1;
-    pointer-events: none;
 }
 
-/* Layer 4 - 40% opacity */
-.gradient-layer-2 {
+/* Right side - 30% opacity */
+.gradient-layer-1 {
     position: fixed;
-    top: 75vh;
-    left: 0;
-    width: 100%;
-    height: 25vh;
+    top: 0;
+    right: 0;
+    width: 25%;
+    height: 100%;
     background-image: url('images/LogoKocoRacin.png');
     background-repeat: repeat;
     background-size: 80px;
-    opacity: 0.4;
+    opacity: 0.3;
     z-index: -1;
     pointer-events: none;
 }
