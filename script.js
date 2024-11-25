@@ -241,32 +241,35 @@ document.addEventListener('DOMContentLoaded', () => {
         const now = new Date();
         
         Object.entries(videoSchedule).forEach(([videoId, releaseDate]) => {
-            const overlay = document.querySelector(`#${videoId}-overlay`);
-            if (!overlay) return; // Skip if overlay doesn't exist
-            
-            if (now < releaseDate) {
+            const overlay = document.getElementById(`${videoId}-overlay`);
+            if (!overlay) return;
+
+            if (now >= releaseDate) {
+                // If video is available, remove the overlay
+                overlay.remove();
+            } else {
+                // Calculate time remaining
                 const timeLeft = releaseDate - now;
                 const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
                 const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
                 const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
                 const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
-                
+
+                // Create countdown text
                 let countdownText = '<strong>Видеото ќе биде достапно за:</strong><br>';
                 if (days > 0) {
-                    countdownText += `${days} дена<br>`;
+                    countdownText += `${days} ${days === 1 ? 'ден' : 'дена'}<br>`;
                 }
-                countdownText += `<span style="font-size: 1.4em">${padNumber(hours)}:${padNumber(minutes)}:${padNumber(seconds)}</span>`;
+                countdownText += `<span class="countdown-time">${padNumber(hours)}:${padNumber(minutes)}:${padNumber(seconds)}</span>`;
                 
                 overlay.innerHTML = countdownText;
-            } else {
-                overlay.remove(); // Remove the overlay completely when video is available
             }
         });
     }
 
-    // Update countdown every second
+    // Initial update and start interval
+    updateVideoAvailability();
     setInterval(updateVideoAvailability, 1000);
-    updateVideoAvailability(); // Initial update
 
     function moveVideo(button, direction) {
         const videoItem = button.closest('.video-item');
