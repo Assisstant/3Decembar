@@ -11,7 +11,7 @@ body {
     background-image: url('images/LogoKocoRacin.png');
     background-repeat: repeat;
     background-size: 150px;
-    background-opacity: 0.1;
+    opacity: 0.1;
 }
 
 .hero {
