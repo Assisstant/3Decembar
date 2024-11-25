@@ -83,11 +83,22 @@ h1 {
     border-radius: 8px;
     margin: 10px;
     box-shadow: 0 2px 10px rgba(0,0,0,0.5);
-    display: none; /* Hide by default */
+    display: none;
 }
 
 .video-item:hover .video-overlay {
-    display: block; /* Show on hover */
+    display: block;
+}
+
+.video-overlay strong {
+    color: white !important;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.video-overlay span {
+    color: white !important;
+    font-weight: bold;
 }
 
 .video-overlay * {

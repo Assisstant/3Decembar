@@ -223,14 +223,14 @@ document.addEventListener('DOMContentLoaded', () => {
         item.addEventListener('touchmove', resetActivityTimer);
     });
 
-    // Video release dates (working days only)
+    // Video release dates
     const videoSchedule = {
-        'nastava': new Date('2023-11-27T08:00:00'),      // Monday
-        'kabineti': new Date('2023-11-28T08:00:00'),     // Tuesday
-        'modificirana': new Date('2023-11-29T08:00:00'), // Wednesday
-        'pedagog': new Date('2023-11-30T08:00:00'),      // Thursday
-        'vospituvaci': new Date('2023-12-01T08:00:00'),  // Friday
-        'obrazovni': new Date('2023-12-04T08:00:00')     // Monday
+        'nastava': new Date('2023-11-25T08:00:00'),      // Already available
+        'kabineti': new Date('2023-11-26T08:00:00'),     // 26th Nov, 8 AM
+        'modificirana': new Date('2023-11-27T08:00:00'), // 27th Nov, 8 AM
+        'pedagog': new Date('2023-11-28T08:00:00'),      // 28th Nov, 8 AM
+        'vospituvaci': new Date('2023-11-29T08:00:00'),  // 29th Nov, 8 AM
+        'obrazovni': new Date('2023-12-02T08:00:00')     // 2nd Dec, 8 AM
     };
 
     function padNumber(num) {
@@ -239,6 +239,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function updateVideoAvailability() {
         const now = new Date();
+        
+        // For testing, uncomment this line and adjust the date to test different scenarios
+        // now = new Date('2023-11-26T10:00:00');
         
         Object.entries(videoSchedule).forEach(([videoId, releaseDate]) => {
             const overlay = document.querySelector(`#${videoId}-overlay`);
@@ -258,6 +261,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 countdownText += `<span style="font-size: 1.4em">${padNumber(hours)}:${padNumber(minutes)}:${padNumber(seconds)}</span>`;
                 
                 overlay.innerHTML = countdownText;
+                overlay.style.display = 'block';
             } else {
                 overlay.remove(); // Remove the overlay completely when video is available
             }
