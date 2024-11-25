@@ -3,13 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
     <title>3ти декември</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header class="hero">
         <div class="hero-image">
-            <img src="/images/1.jpeg" alt="Cover Image">
+            <img src="images/1.jpeg" alt="Cover Image">
         </div>
     </header>
 
@@ -19,27 +22,78 @@
             
             <p>По повод Меѓународниот ден на лицата со попреченост, на 3-ти декември, подготвивме специјална кампања за подигнување на свеста и промовирање на инклузијата во нашето општество. Секој ден до 3-ти декември ќе објавуваме по едно инспиративно видео кое ги истакнува напорите, успесите и искуствата на учениците, наставниците и професионалците кои работат на полето на инклузивното образование.</p>
         </section>
+<!--
+nastava https://www.youtube.com/embed/jJbtDdJFKf4"
+kabineti https://youtu.be/kjYtLXhXj4U
+modificirana https://youtu.be/f4zOfnNwzDo
+pedagog https://youtu.be/pVhqUQp0iNk
+vospituvaci https://youtu.be/Y_cgp3QD_mo
+obrazovni https://youtu.be/qUHRcWIVW3o
 
-        <section class="video-gallery">
+         -->
+         <section class="video-gallery">
+            <!-- nastava -->
             <div class="video-item">
-                <iframe src="https://www.youtube.com/embed/jJbtDdJFKf4?rel=0" frameborder="0" allowfullscreen></iframe>
+                <div class="video-controls">
+                    <button onclick="moveVideo(this, 'left')" class="btn-direction">⬅️</button>
+                    <button onclick="moveVideo(this, 'up')" class="btn-direction">⬆️</button>
+                    <button onclick="moveVideo(this, 'down')" class="btn-direction">⬇️</button>
+                    <button onclick="moveVideo(this, 'right')" class="btn-direction">➡️</button>
+                </div>
+                <iframe src="https://www.youtube.com/embed/jJbtDdJFKf4" frameborder="0" allowfullscreen></iframe>
             </div>
+            <!-- kabineti -->
             <div class="video-item">
-                <iframe src="https://www.youtube.com/embed/Y_cgp3QD_mo?rel=0" frameborder="0" allowfullscreen></iframe>
+                <div class="video-controls">
+                    <button onclick="moveVideo(this, 'left')" class="btn-direction">⬅️</button>
+                    <button onclick="moveVideo(this, 'up')" class="btn-direction">⬆️</button>
+                    <button onclick="moveVideo(this, 'down')" class="btn-direction">⬇️</button>
+                    <button onclick="moveVideo(this, 'right')" class="btn-direction">➡️</button>
+                </div>
+                <iframe src="https://www.youtube.com/embed/Y_cgp3QD_mo" frameborder="0" allowfullscreen></iframe>
             </div>
+            <!-- modificirana -->
             <div class="video-item">
-                <iframe src="https://www.youtube.com/embed/f4zOfnNwzDo?rel=0" frameborder="0" allowfullscreen></iframe>
+                <div class="video-controls">
+                    <button onclick="moveVideo(this, 'left')" class="btn-direction">⬅️</button>
+                    <button onclick="moveVideo(this, 'up')" class="btn-direction">⬆️</button>
+                    <button onclick="moveVideo(this, 'down')" class="btn-direction">⬇️</button>
+                    <button onclick="moveVideo(this, 'right')" class="btn-direction">➡️</button>
+                </div>
+                <iframe src="https://www.youtube.com/embed/f4zOfnNwzDo" frameborder="0" allowfullscreen></iframe>
             </div>
+            <!-- pedagog -->
             <div class="video-item">
-                <iframe src="https://www.youtube.com/embed/pVhqUQp0iNk?rel=0" frameborder="0" allowfullscreen></iframe>
+                <div class="video-controls">
+                    <button onclick="moveVideo(this, 'left')" class="btn-direction">⬅️</button>
+                    <button onclick="moveVideo(this, 'up')" class="btn-direction">⬆️</button>
+                    <button onclick="moveVideo(this, 'down')" class="btn-direction">⬇️</button>
+                    <button onclick="moveVideo(this, 'right')" class="btn-direction">➡️</button>
+                </div>
+                <iframe src="https://www.youtube.com/embed/pVhqUQp0iNk" frameborder="0" allowfullscreen></iframe>
             </div>
+            <!-- vospituvaci -->
             <div class="video-item">
-                <iframe src="https://www.youtube.com/embed/qUHRcWIVW3o?rel=0" frameborder="0" allowfullscreen></iframe>
+                <div class="video-controls">
+                    <button onclick="moveVideo(this, 'left')" class="btn-direction">⬅️</button>
+                    <button onclick="moveVideo(this, 'up')" class="btn-direction">⬆️</button>
+                    <button onclick="moveVideo(this, 'down')" class="btn-direction">⬇️</button>
+                    <button onclick="moveVideo(this, 'right')" class="btn-direction">➡️</button>
+                </div>
+                <iframe src="https://www.youtube.com/embed/qUHRcWIVW3o" frameborder="0" allowfullscreen></iframe>
             </div>
+            <!-- obrazovni -->
             <div class="video-item">
+                <div class="video-controls">
+                    <button onclick="moveVideo(this, 'left')" class="btn-direction">⬅️</button>
+                    <button onclick="moveVideo(this, 'up')" class="btn-direction">⬆️</button>
+                    <button onclick="moveVideo(this, 'down')" class="btn-direction">⬇️</button>
+                    <button onclick="moveVideo(this, 'right')" class="btn-direction">➡️</button>
+                </div>
                 <iframe src="https://www.youtube.com/embed/kjYtLXhXj4U?rel=0" frameborder="0" allowfullscreen></iframe>
             </div>
         </section>
+        
     </main>
 </body>
 </html>
