@@ -47,19 +47,21 @@ body::before {
 .hero {
     position: relative;
     width: 100%;
+    height: 500px;
     overflow: hidden;
     margin-bottom: 20px;
 }
 
 .hero-image {
     width: 100%;
-    height: auto;
-    display: block;
+    height: 100%;
 }
 
 .hero-image img {
     width: 100%;
-    height: auto;
+    height: 100%;
+    object-fit: contain;
+    object-position: top;
     display: block;
 }
 
@@ -108,16 +110,16 @@ body::before {
 
 .day-card {
     background: white;
-    border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
     padding: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
 .day-card h3 {
-    text-align: center;
-    margin-bottom: 1rem;
-    color: #2c3e50;
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: #1877f2;
 }
 
 .day-card .content {
@@ -142,34 +144,29 @@ body::before {
 }
 
 .video-item {
-    position: relative;
+    margin: 20px auto;
     width: 100%;
-    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
-    margin: 30px auto;
-    max-width: 800px; /* Larger max-width for bigger videos */
+    max-width: 800px;
+    aspect-ratio: 16/9;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
 .video-item iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
     width: 100%;
     height: 100%;
     border: none;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .social-links {
+    position: fixed;
+    right: 20px;
+    top: 20px;
     display: flex;
-    gap: 10px;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
-    background: rgba(255, 255, 255, 0.9);
-    margin-top: -50px;
-    position: relative;
-    z-index: 10;
+    flex-direction: column;
+    gap: 20px;
+    z-index: 1000;
 }
 
 .facebook-link, .youtube-link {
@@ -178,20 +175,25 @@ body::before {
     text-decoration: none;
     color: #1877f2;
     font-weight: 500;
-    padding: 6px 12px;
-    border-radius: 6px;
-    transition: background-color 0.3s;
+    padding: 8px 16px;
+    border-radius: 100px;
+    transition: all 0.3s ease;
     font-size: 14px;
     white-space: nowrap;
-    background: white;
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    backdrop-filter: blur(5px);
 }
 
 .facebook-link:hover, .youtube-link:hover {
-    background-color: #f0f2f5;
+    background-color: rgba(255, 255, 255, 1);
+    transform: translateX(-5px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
 }
 
 .youtube-link {
     color: #ff0000;
+    margin-top: auto;
 }
 
 .facebook-icon, .youtube-icon {
@@ -200,6 +202,21 @@ body::before {
     margin-right: 6px;
     fill: currentColor;
     flex-shrink: 0;
+}
+
+/* Position the middle button */
+.facebook-link:nth-child(2) {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 20px;
+}
+
+/* Position the bottom button */
+.youtube-link {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
 }
 
 /* Hide all other buttons */
@@ -213,19 +230,45 @@ button,
 /* Mobile Responsive */
 @media (max-width: 768px) {
     .hero {
-        height: 200px;
+        height: 300px;
     }
 
     .social-links {
-        flex-direction: column;
-        align-items: stretch;
-        margin-top: -70px;
-        padding: 15px;
-        gap: 8px;
+        right: 10px;
     }
 
     .facebook-link, .youtube-link {
-        justify-content: center;
-        padding: 8px 16px;
+        padding: 6px 12px;
+        font-size: 13px;
+    }
+
+    .facebook-link:hover, .youtube-link:hover {
+        transform: translateX(-3px);
+    }
+
+    .facebook-icon, .youtube-icon {
+        width: 18px;
+        height: 18px;
+        margin-right: 4px;
+    }
+
+    /* Adjust positions for mobile */
+    .facebook-link:nth-child(2) {
+        right: 10px;
+    }
+
+    .youtube-link {
+        right: 10px;
+    }
+
+    .day-card {
+        padding: 15px;
+        margin-bottom: 20px;
+    }
+
+    .video-item {
+        margin: 15px -15px;
+        width: calc(100% + 30px);
+        border-radius: 0;
     }
 }
