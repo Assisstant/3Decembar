@@ -111,6 +111,12 @@ body::before {
     vertical-align: middle;
 }
 
+.waiting-emoji {
+    font-size: 2em;
+    vertical-align: middle;
+    margin: 0 5px;
+}
+
 .video-item {
     position: relative;
     width: 100%;
