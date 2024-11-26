@@ -144,11 +144,10 @@ body::before {
 }
 
 .video-item {
-    margin: 20px auto;
-    width: 100%;
-    max-width: 800px;
+    margin: 30px -20px;
+    width: calc(100% + 40px);
     aspect-ratio: 16/9;
-    border-radius: 12px;
+    border-radius: 0;
     overflow: hidden;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
@@ -165,7 +164,7 @@ body::before {
     top: 20px;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 10px;
     z-index: 1000;
 }
 
@@ -193,7 +192,6 @@ body::before {
 
 .youtube-link {
     color: #ff0000;
-    margin-top: auto;
 }
 
 .facebook-icon, .youtube-icon {
@@ -202,21 +200,6 @@ body::before {
     margin-right: 6px;
     fill: currentColor;
     flex-shrink: 0;
-}
-
-/* Position the middle button */
-.facebook-link:nth-child(2) {
-    position: fixed;
-    top: 50%;
-    transform: translateY(-50%);
-    right: 20px;
-}
-
-/* Position the bottom button */
-.youtube-link {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
 }
 
 /* Hide all other buttons */
@@ -235,6 +218,8 @@ button,
 
     .social-links {
         right: 10px;
+        top: 10px;
+        gap: 8px;
     }
 
     .facebook-link, .youtube-link {
@@ -252,23 +237,13 @@ button,
         margin-right: 4px;
     }
 
-    /* Adjust positions for mobile */
-    .facebook-link:nth-child(2) {
-        right: 10px;
-    }
-
-    .youtube-link {
-        right: 10px;
+    .video-item {
+        margin: 20px -15px;
+        width: calc(100% + 30px);
     }
 
     .day-card {
         padding: 15px;
         margin-bottom: 20px;
-    }
-
-    .video-item {
-        margin: 15px -15px;
-        width: calc(100% + 30px);
-        border-radius: 0;
     }
 }
