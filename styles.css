@@ -169,13 +169,18 @@ body::before {
 }
 
 .fb-share-button {
-    display: inline-block !important;
+    display: flex !important;
+    align-items: center;
+    text-decoration: none;
+    color: #1877f2;
+    font-weight: 500;
+    padding: 8px 16px;
+    border-radius: 6px;
+    transition: background-color 0.3s;
 }
 
-.fb-share-button span {
-    border-radius: 6px !important;
-    padding: 8px 16px !important;
-    font-size: 16px !important;
+.fb-share-button:hover {
+    background-color: #f0f2f5;
 }
 
 .social-links {
@@ -260,8 +265,8 @@ body::before {
         width: 100%;
     }
 
-    .fb-share-button span {
-        font-size: 14px !important;
-        padding: 6px 12px !important;
+    .fb-share-button {
+        padding: 6px 12px;
+        font-size: 14px;
     }
 }
