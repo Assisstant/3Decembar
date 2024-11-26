@@ -167,10 +167,18 @@ body::before {
     display: flex;
     justify-content: flex-start;
     margin: 20px 0;
+    flex-wrap: wrap;
 }
 
 .share-buttons > div {
     min-width: 80px;
+    margin: 5px;
+}
+
+/* Facebook Share Button */
+.fb-share-button {
+    display: inline-block !important;
+    margin: 5px;
 }
 
 /* Social Links */
@@ -249,5 +257,15 @@ body::before {
 
     .social-links a span {
         font-size: 14px;
+    }
+
+    .share-buttons {
+        padding: 10px;
+        width: 100%;
+    }
+
+    .fb-share-button {
+        display: inline-block !important;
+        margin: 5px 0;
     }
 }
