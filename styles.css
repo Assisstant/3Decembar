@@ -165,11 +165,8 @@ body::before {
 /* Share buttons styling */
 .share-buttons {
     display: flex;
-    gap: 10px;
-    justify-content: center;
-    margin-top: 15px;
-    padding: 10px;
-    border-top: 1px solid #eee;
+    justify-content: flex-start;
+    margin: 20px 0;
 }
 
 .share-buttons > div {
