@@ -6,10 +6,21 @@
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
+    
+    <!-- Facebook Open Graph meta tags -->
+    <meta property="og:title" content="3ти декември - Меѓународен ден на лицата со попреченост">
+    <meta property="og:description" content="Специјална кампања за подигнување на свеста и промовирање на инклузијата во нашето општество">
+    <meta property="og:image" content="images/1.jpeg">
+    <meta property="og:url" content="https://your-site-url.com">
+    <meta property="og:type" content="website">
+    
     <title>3ти декември</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- Facebook SDK -->
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/mk_MK/sdk.js#xfbml=1&version=v18.0" nonce="random_nonce"></script>
     <header class="hero">
         <div class="hero-image">
             <img src="images/1.jpeg" alt="Cover Image">
@@ -17,15 +28,36 @@
     </header>
 
     <main>
+        <div class="social-links">
+            <a href="https://www.facebook.com/koco.racinbitola" target="_blank" class="facebook-link" title="Следете нè на Facebook">
+                <svg class="facebook-icon" viewBox="0 0 24 24">
+                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                </svg>
+                <span>Следете нè на Facebook</span>
+            </a>
+            <a href="https://www.youtube.com/channel/UCFyAJGJc30dBsvrfIh_49rw" target="_blank" class="youtube-link" title="Посетете го нашиот YouTube канал">
+                <svg class="youtube-icon" viewBox="0 0 24 24">
+                    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                </svg>
+                <span>Следете нè на YouTube</span>
+            </a>
+        </div>
+
         <section class="content">
             <h2>Одбележување на 3-ти декември</h2>
             <h2>Меѓународен ден на лицата со попреченост</h2>
             
             <h4>По повод Меѓународниот ден на лицата со попреченост, на 3-ти декември, подготвивме специјална кампања за подигнување на свеста и промовирање на инклузијата во нашето општество. Секој ден до 3-ти декември ќе објавуваме по едно инспиративно видео кое ги истакнува напорите, успесите и искуствата на учениците, наставниците и професионалците кои работат на полето на инклузивното образование.</h4>
+            
+            <!-- Adding Facebook share button -->
+            <div class="fb-share-button" 
+                data-href="https://your-site-url.com" 
+                data-layout="button_count">
+            </div>
         </section>
 
         <section class="video-gallery">
-            <div class="day-card">
+            <div class="day-card" id="day1">
                 <h3>ДЕН БРОЈ 1️⃣</h3>
                 <div class="content">
                     <p style="text-indent: 30px;">Настава со ученици со посебни потреби 
@@ -33,10 +65,21 @@
                     <div class="video-item">
                         <iframe src="https://www.youtube.com/embed/jJbtDdJFKf4" frameborder="0" allowfullscreen></iframe>
                     </div>
+                    <div class="share-buttons">
+                        <div class="fb-share-button" 
+                            data-href="https://your-site-url.com/#day1" 
+                            data-layout="button"
+                            data-size="small">
+                        </div>
+                        <div class="fb-send" 
+                            data-href="https://your-site-url.com/#day1"
+                            data-size="small">
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div class="day-card">
+            <div class="day-card" id="day2">
                 <h3>ДЕН БРОЈ 2️⃣</h3>
                 <div class="content">
                     <p style="text-indent: 30px;">Индивидуални третмани
@@ -55,49 +98,139 @@
                     <div class="video-item">
                         <iframe src="https://www.youtube.com/embed/kjYtLXhXj4U" frameborder="0" allowfullscreen></iframe>
                     </div>
+                    <div class="share-buttons">
+                        <div class="fb-share-button" 
+                            data-href="https://your-site-url.com/#day2" 
+                            data-layout="button"
+                            data-size="small">
+                        </div>
+                        <div class="fb-send" 
+                            data-href="https://your-site-url.com/#day2"
+                            data-size="small">
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div class="day-card">
+            <div class="day-card" id="day3">
                 <h3>ДЕН БРОЈ 3️⃣</h3>
                 <div class="content">
                     <p style="text-align: center; font-style: italic; color: #666;">Кликни на видеото да дознаеш кога ќе биде објавено</p>
                     <div class="video-item">
                         <iframe src="https://www.youtube.com/embed/f4zOfnNwzDo" frameborder="0" allowfullscreen></iframe>
                     </div>
+                    <div class="share-buttons">
+                        <div class="fb-share-button" 
+                            data-href="https://your-site-url.com/#day3" 
+                            data-layout="button"
+                            data-size="small">
+                        </div>
+                        <div class="fb-send" 
+                            data-href="https://your-site-url.com/#day3"
+                            data-size="small">
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div class="day-card">
+            <div class="day-card" id="day4">
                 <h3>ДЕН БРОЈ 4️⃣</h3>
                 <div class="content">
                     <p style="text-align: center; font-style: italic; color: #666;">Кликни на видеото да дознаеш кога ќе биде објавено</p>
                     <div class="video-item">
                         <iframe src="https://www.youtube.com/embed/pVhqUQp0iNk" frameborder="0" allowfullscreen></iframe>
                     </div>
+                    <div class="share-buttons">
+                        <div class="fb-share-button" 
+                            data-href="https://your-site-url.com/#day4" 
+                            data-layout="button"
+                            data-size="small">
+                        </div>
+                        <div class="fb-send" 
+                            data-href="https://your-site-url.com/#day4"
+                            data-size="small">
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div class="day-card">
+            <div class="day-card" id="day5">
                 <h3>ДЕН БРОЈ 5️⃣</h3>
                 <div class="content">
                     <p style="text-align: center; font-style: italic; color: #666;">Кликни на видеото да дознаеш кога ќе биде објавено</p>
                     <div class="video-item">
                         <iframe src="https://www.youtube.com/embed/Y_cgp3QD_mo" frameborder="0" allowfullscreen></iframe>
                     </div>
+                    <div class="share-buttons">
+                        <div class="fb-share-button" 
+                            data-href="https://your-site-url.com/#day5" 
+                            data-layout="button"
+                            data-size="small">
+                        </div>
+                        <div class="fb-send" 
+                            data-href="https://your-site-url.com/#day5"
+                            data-size="small">
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div class="day-card">
+            <div class="day-card" id="day6">
                 <h3>ДЕН БРОЈ 6️⃣</h3>
                 <div class="content">
                     <p style="text-align: center; font-style: italic; color: #666;">Кликни на видеото да дознаеш кога ќе биде објавено</p>
                     <div class="video-item">
                         <iframe src="https://www.youtube.com/embed/qUHRcWIVW3o" frameborder="0" allowfullscreen></iframe>
                     </div>
+                    <div class="share-buttons">
+                        <div class="fb-share-button" 
+                            data-href="https://your-site-url.com/#day6" 
+                            data-layout="button"
+                            data-size="small">
+                        </div>
+                        <div class="fb-send" 
+                            data-href="https://your-site-url.com/#day6"
+                            data-size="small">
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
     </main>
+
+    <!-- Add script to handle dynamic meta tags -->
+    <script>
+        // Update meta tags based on hash in URL
+        function updateMetaTags() {
+            const hash = window.location.hash;
+            const baseUrl = 'https://your-site-url.com';
+            const ogUrl = document.querySelector('meta[property="og:url"]');
+            
+            if (hash && hash.startsWith('#day')) {
+                ogUrl.setAttribute('content', baseUrl + hash);
+                
+                // Update title and description based on the day
+                const dayCard = document.querySelector(hash);
+                if (dayCard) {
+                    const title = dayCard.querySelector('h3').textContent;
+                    const description = dayCard.querySelector('p').textContent.trim();
+                    
+                    document.querySelector('meta[property="og:title"]').setAttribute(
+                        'content', 
+                        '3ти декември - ' + title
+                    );
+                    document.querySelector('meta[property="og:description"]').setAttribute(
+                        'content',
+                        description.substring(0, 200) + '...'
+                    );
+                }
+            }
+        }
+
+        // Update meta tags on page load
+        window.addEventListener('load', updateMetaTags);
+        // Update meta tags when hash changes
+        window.addEventListener('hashchange', updateMetaTags);
+    </script>
 </body>
 </html>
