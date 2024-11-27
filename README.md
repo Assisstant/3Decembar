@@ -1,6 +1,6 @@
 Simple Video Embedding Website
 
-A lightweight and customizable website for embedding and sharing videos. This project is perfect for showcasing video content for various purposes, such as promoting events, providing educational resources, or highlighting achievements.
+This project is a lightweight and customizable website for embedding and sharing videos. It is perfect for showcasing video content for various purposes, such as promoting events, providing educational resources, or highlighting achievements.
 
 Table of Contents
 Demo
